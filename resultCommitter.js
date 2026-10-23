@@ -104,7 +104,7 @@ class ResultCommitter {
                             resolve(answer);
                         } else if ((Date.now() - lastTs) > 10 * 1000) {
 
-                            console.error('oracle not responding', Date.now());
+                            console.error(new Date().toISOString(), `oracle ${oracle_device_address} not responding to ${msg}`);
                             clearInterval(intervalId);
                             resolve(false);
 
