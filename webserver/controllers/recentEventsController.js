@@ -11,6 +11,7 @@ module.exports = async (request, reply) => {
         const page = (isInteger(Number(pageInParams)) && pageInParams > 0) ? pageInParams : 1;
 
         if (!isValidAddress(address)) return reply.badRequest();
+        if (page > 1e9) return reply.badRequest();
 
         const limit = conf.limitEventsOnPage;
         const offset = (page - 1) * limit;
